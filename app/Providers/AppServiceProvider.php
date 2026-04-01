@@ -15,8 +15,9 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * @var string 
      */
+    public const HOME = '/sach';
     public function boot(): void
     {
         //
