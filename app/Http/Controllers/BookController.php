@@ -74,23 +74,26 @@ public function order()
                 ->get();
         }
     }
-
-<<<<<<< HEAD
-    function chitiet($id)
+    return view("vidusach.order", compact("quantity", "data"));
+}
+    function detail($id)
     {
         $data = DB::select("select * from sach where id = ?",[$id])[0]; 
         return view("chitiet",compact("data"));
     }
+
     public function booklist(){
         $data = DB::table("sach")->get();
         return view("vidusach.book_list",compact("data"));
-        }
-        public function bookcreate(){
+    }
+    
+    public function bookcreate(){
             $the_loai = DB::table("dm_the_loai")->get();
             $action = "add";
             return view("vidusach.book_form",compact("the_loai","action"));
             }
-            public function booksave($action, Request $request)
+    
+    public function booksave($action, Request $request)
 {
 $request->validate([
 'tieu_de' => ['required', 'string', 'max:200'],
@@ -141,12 +144,6 @@ return redirect()->route('booklist')->with('status', $message);
                 return redirect()->route('booklist')->with('status', "Xóa thành công");
                 }
                 
-                   
-        
-=======
-    return view("vidusach.order", compact("quantity", "data"));
->>>>>>> origin/nguyenhuynhthuylinh
-}
 
 public function cartdelete(Request $request)
 {

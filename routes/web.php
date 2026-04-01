@@ -20,7 +20,7 @@ Route::post('/saveinfo', 'App\Http\Controllers\AccountController@saveaccountinfo
     ->name('saveinfo');
 
 require __DIR__.'/auth.php';
-<<<<<<< HEAD
+
 Route::get('/book/list','App\Http\Controllers\BookController@booklist')
 ->middleware('auth')->name("booklist");
 Route::get('/book/create','App\Http\Controllers\BookController@bookcreate')
@@ -44,7 +44,6 @@ Route::get('/danhmuc/sua/{id}', [CategoryController::class, 'edit'])->name('danh
 Route::post('/danhmuc/capnhat', [CategoryController::class, 'update'])->name('danhmuc.update');
 
 Route::get('/danhmuc/xoa/{id}', [CategoryController::class, 'delete'])->name('danhmuc.delete');
-=======
 
 Route::get("/layouts/sach_layout","App\Http\Controllers\BookController@sach");
 
@@ -61,4 +60,4 @@ Route::post('/cart/delete','App\Http\Controllers\BookController@cartdelete')->na
 
 Route::post('/order/create','App\Http\Controllers\BookController@ordercreate')
     ->middleware('auth')->name('ordercreate');
->>>>>>> origin/nguyenhuynhthuylinh
+
