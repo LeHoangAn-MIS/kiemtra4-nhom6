@@ -1,5 +1,4 @@
 <?php
-
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +16,23 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+<<<<<<< HEAD
+=======
+require __DIR__.'/auth.php';
+
+Route::get("/layouts/sach_layout","App\Http\Controllers\BookController@sach");
+
+Route::get('/sach/theloai/{id}','App\Http\Controllers\BookController@theloai');
+
+Route::get('sach/chitiet/{id}', 'App\Http\Controllers\BookController@chitiet');
+
+
+Route::get('/order','App\Http\Controllers\BookController@order')->name('order');
+
+Route::post('/cart/add','App\Http\Controllers\BookController@cartadd')->name('cartadd');
+
+Route::post('/cart/delete','App\Http\Controllers\BookController@cartdelete')->name('cartdelete');
+
+Route::post('/order/create','App\Http\Controllers\BookController@ordercreate')
+    ->middleware('auth')->name('ordercreate');
+>>>>>>> origin/nguyenhuynhthuylinh

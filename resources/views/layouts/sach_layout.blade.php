@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{$title}}</title>
+    <title>@yield('title')</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
-
 <body>
 
 <!-- HEADER -->
@@ -13,8 +12,13 @@
 </header>
 
 <!-- MAIN -->
-            <x-menu>
-                <x-slot name='item'>
+<main style="width:1000px; margin:2px auto;">
+    <div class="row">
+
+        <!-- SIDEBAR -->
+        <div class="col-3 pr-0">
+            <nav class="navbar navbar-light">
+                <ul class="navbar-nav">
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ url('/layouts/sach_layout') }}">Trang chủ</a>
                     </li>
@@ -27,23 +31,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('sach/theloai/3') }}">Tác phẩm kinh điển</a>
                     </li>
-                </x-slot>
-            </x-menu>
-
-            </div>
+                </ul>
+            </nav>
         </div>
 
-<!-- MAIN -->
-<main style="width:1000px; margin:2px auto;">
-    <div class="row">
-
-        <div class="col-12">
-            {{$slot}}
+        <!-- CONTENT -->
+        <div class="col-9">
+            @yield('content')
         </div>
-
-    </div>
-</main>
-
 <style>
 .navbar {
     background-color: #ff5850;
@@ -67,7 +62,6 @@
     margin: 10px;
     text-align: center;
 }
-
 </style>
     </div>
 </main>
