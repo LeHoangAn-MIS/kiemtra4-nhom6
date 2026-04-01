@@ -1,9 +1,5 @@
-<nav class="navbar navbar-light">
-    <ul class="navbar-nav">
-        {{$item}}
-    </ul>
-</nav>
 <head>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
@@ -11,7 +7,7 @@
 
     <!-- MENU -->
     <ul class="navbar-nav d-flex flex-row justify-content-center mb-0">
-        {{ $item }}
+        {{ $slot }}
     </ul>
 
     <!-- 🛒 CART -->
