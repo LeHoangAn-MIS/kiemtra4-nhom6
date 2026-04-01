@@ -34,3 +34,5 @@ Route::post('/cart/delete','App\Http\Controllers\BookController@cartdelete')->na
 
 Route::post('/order/create','App\Http\Controllers\BookController@ordercreate')
     ->middleware('auth')->name('ordercreate');
+
+Route::post('/bookview','App\Http\Controllers\BookController@bookview')->name("bookview");
