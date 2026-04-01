@@ -36,10 +36,6 @@
                     </button>
                 </div>
 
-                <p>
-                    <b>Thể loại:</b> {{ $book->the_loai }}
-                </p>
-
                 <hr>
 
                 <p>

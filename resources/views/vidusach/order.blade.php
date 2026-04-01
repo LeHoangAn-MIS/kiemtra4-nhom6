@@ -1,105 +1,74 @@
 <x-book-layout>
-
-    <x-slot name="title">
-        Giỏ hàng
+    <x-slot name='title'>
+        Đặt hàng
     </x-slot>
 
-    <div class="container mt-4">
-
-        <h2>🛒 Giỏ hàng của bạn</h2>
-
-        @php
-            $total = 0;
-        @endphp
-
-        @if(session('cart') && count(session('cart')) > 0)
-
-            <table class="table table-bordered mt-3">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>ID sách</th>
-                        <th>Số lượng</th>
-                        <th>Hành động</th>
-                    </tr>
+    <div>
+        <div style='color:#15c; font-weight:bold;font-size:15px;text-align:center'>DANH SÁCH SẢN PHẨM</div>
+        
+            <table class='book-table' style='margin:0 auto; width:70%'>
+                <thead>
+                    <th>STT</th>
+                    <th>Tên sách</th>
+                    <th>Số lượng</th>
+                    <th>Đơn giá</th>
+                    <th>Xóa</th>
                 </thead>
-
                 <tbody>
-                    @foreach(session('cart') as $id => $num)
-
-                        @php
-                            // Lấy thông tin sách từ DB
-                            $book = DB::table('sach')->where('id', $id)->first();
-                            $subtotal = $book->gia_ban * $num;
-                            $total += $subtotal;
-                        @endphp
-
-                        <tr>
-                            <td>{{ $book->tieu_de }}</td>
-
-                            <td>{{ $num }}</td>
-
-                            <td>
-                                <button class="btn btn-danger btn-sm delete-item" data-id="{{ $id }}">
-                                    Xoá
-                                </button>
+                    @php
+                        $tongTien = 0;
+                    @endphp
+                    @foreach($data as $key=>$row)
+                       <tr>
+                            <td align='center'>{{$key+1}}</td>
+                            <td>{{$row->tieu_de}}</td>
+                            <td align='center'>{{$quantity[$row->id]}}</td>
+                            <td align='center'>{{number_format($row->gia_ban,0,',','.')}}đ</td>
+                            <td align='center'>
+                                <form method='post' action = "{{route('cartdelete')}}" >
+                                    <input type='hidden' value='{{$row->id}}' name='id'>
+                                    <input type='submit' class='btn btn-sm btn-danger' value='Xóa'>
+                                    {{ csrf_field() }}
+                                </form>
                             </td>
-                        </tr>
-
+                       </tr>
+                       @php
+                            $tongTien +=$quantity[$row->id]*$row->gia_ban;
+                        @endphp
                     @endforeach
+                    <tr>
+                        <td colspan='3' align='center'><b>Tổng cộng</b></td>
+                        <td><b>{{number_format($tongTien,0,',','.')}}đ</b></td>
+                        <td></td>
+                    </tr>
                 </tbody>
             </table>
-
-            <h4 class="text-right">
-                Tổng tiền: 
-                <span style="color:red">
-                    {{ number_format($total,0,",",".") }} đ
-                </span>
-            </h4>
-
-            <div class="text-right mt-3">
-                <form method="POST" action="{{ route('ordercreate') }}">
-                    @csrf
-                    <button class="btn btn-success">
-                        Đặt hàng
-                    </button>
-                </form>
-            </div>
-
-        @else
-
-            <div class="alert alert-warning mt-3">
-                Giỏ hàng trống 😢
-            </div>
-
-        @endif
-
+           
+                <div style='font-weight:bold;width:70%;margin:0 auto;text-align:center;'>
+                    @auth
+                        @if(count($data)>0)
+                        <form method='post' action = "{{route('ordercreate')}}" >
+                            Hình thức thanh toán <br>
+                            <div class='d-inline-flex'>
+                                <select name='hinh_thuc_thanh_toan' class='form-control form-control-sm'>
+                                    <option value='1'>Tiền mặt</option>
+                                    <option value='2'>Chuyển khoản</option>
+                                    <option value='3'>Thanh toán VNPay</option>
+                                </select>
+                            </div><br>
+                            <input type='submit' class='btn btn-sm btn-primary mt-1' value='ĐẶT HÀNG'>
+                            {{ csrf_field() }}
+                        </form>
+                        @else
+                            Vui lòng chọn sản phẩm cần mua
+                        @endif
+                    @else
+                        Vui lòng đăng nhập trước khi đặt hàng
+                    @endauth
+                </div>
+            
+       
     </div>
 
-    <!-- JS -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <script>
-    $(document).ready(function(){
-
-        $(".delete-item").click(function(){
-
-            let id = $(this).data("id");
-
-            $.ajax({
-                type: "POST",
-                url: "{{ route('cartdelete') }}",
-                data: {
-                    "_token": "{{ csrf_token() }}",
-                    "id": id
-                },
-                success: function(){
-                    location.reload(); // reload lại trang
-                }
-            });
-
-        });
-
-    });
-    </script>
-
 </x-book-layout>
+
