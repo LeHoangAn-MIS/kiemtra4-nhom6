@@ -1,7 +1,7 @@
 <!DOCTYPE html>
     <html>
         <head>
-            <title>{{$title}}</title>
+            <title>{{ $title ?? config('app.name', 'Book Store') }}</title>
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         </head>
         <style>
@@ -28,6 +28,32 @@
         <header style='text-align:center'>
             <img src="{{asset('hinh/banner_sach.jpg')}}" width="1000px">
         </header>
+        @auth
+        <div class="dropdown">
+            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                {{ Auth::user()->name }}
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="{{route('account')}}">Quản lý</a>
+
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <a class="dropdown-item"
+                       onclick="event.preventDefault(); this.closest('form').submit();">
+                       Đăng xuất
+                    </a>
+                </form>
+            </div>
+        </div>
+        @else
+        <a href="{{ route('login') }}">
+            <button class='btn btn-sm btn-primary'>Đăng nhập</button>
+        </a>
+
+        <a href="{{ route('register') }}">
+            <button class='btn btn-sm btn-success'>Đăng ký</button>
+        </a>
+        @endauth
         <main style="width:1000px; margin:2px auto;">
             <div class='row'>
                 <div class='col-3 pr-0'>
@@ -55,5 +81,7 @@
                 </div>
             </div>
         </main>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>
