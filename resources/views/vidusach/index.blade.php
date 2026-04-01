@@ -88,3 +88,9 @@ $(document).ready(function(){
 });
 </script>
 
+<div class='btn-add-product'>
+<button class='btn btn-success btn-sm mb-1 add-product' book_id="{{$row->id}}">
+Thêm vào giỏ hàng
+</button>
+</div>
+

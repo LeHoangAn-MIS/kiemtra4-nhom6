@@ -1,11 +1,21 @@
 <?php
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookController;
 use App\Notifications\OrderSuccessNotification;
+// Trang mặc định
+Route::get('/sach', [BookController::class, 'sach']);
+Route::get('/accountpanel', 'App\Http\Controllers\AccountController@accountpanel')
+    ->middleware('auth')
+    ->name('account');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Lọc theo thể loại
+Route::get('/sach/theloai/{id}', [BookController::class, 'theloai']);
+
+// Chi tiết sách
+Route::get('sach/chitiet/{id}','App\Http\Controllers\BookController@chitiet');
+
+Route::get('/', 'App\Http\Controllers\BookController@sach');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -19,7 +29,6 @@ Route::middleware('auth')->group(function () {
 Route::post('/saveinfo', 'App\Http\Controllers\AccountController@saveaccountinfo')
     ->middleware('auth')
     ->name('saveinfo');
-
 
 require __DIR__.'/auth.php';
 
@@ -65,9 +74,7 @@ Route::post('/cart/delete','App\Http\Controllers\BookController@cartdelete')->na
 Route::post('/order/create','App\Http\Controllers\BookController@ordercreate')
     ->middleware('auth')->name('ordercreate');
 
-<<<<<<< HEAD
 Route::post('/bookview','App\Http\Controllers\BookController@bookview')->name("bookview");
-=======
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\TestSendEmail;
 
@@ -99,4 +106,3 @@ Route::get('/test-order-mail', function () {
 
     return 'Test xong';
 });
->>>>>>> origin/nguyenhuynhsaly

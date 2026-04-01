@@ -3,11 +3,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-<<<<<<< HEAD
-=======
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\OrderSuccessNotification;
->>>>>>> origin/nguyenhuynhsaly
 
 class BookController extends Controller
 {
