@@ -47,6 +47,8 @@ Route::get('/danhmuc/xoa/{id}', [CategoryController::class, 'delete'])->name('da
 
 Route::get("/layouts/sach_layout","App\Http\Controllers\BookController@sach");
 
+Route::get("/","App\Http\Controllers\BookController@sach");
+
 Route::get('/sach/theloai/{id}','App\Http\Controllers\BookController@theloai');
 
 Route::get('sach/chitiet/{id}', 'App\Http\Controllers\BookController@chitiet');
@@ -61,3 +63,4 @@ Route::post('/cart/delete','App\Http\Controllers\BookController@cartdelete')->na
 Route::post('/order/create','App\Http\Controllers\BookController@ordercreate')
     ->middleware('auth')->name('ordercreate');
 
+Route::post('/bookview','App\Http\Controllers\BookController@bookview')->name("bookview");
