@@ -6,26 +6,37 @@
 
     <div class="container mt-4">
 
-        <div class="row">
+            <table class="table" style="border:none;">
 
-            <!-- Ảnh sách -->
-            <div class="col-md-4 text-center">
+        <!-- TIÊU ĐỀ -->
+        <tr style="border:none;">
+            <td colspan="2" style="border:none;">
+                <h4 style="font-weight:500; margin:0;">
+                    {{ $book->tieu_de }}
+                </h4>
+            </td>
+        </tr>
+
+                <!-- ẢNH + THÔNG TIN -->
+        <tr style="border:none;">
+            <!-- ẢNH -->
+            <td style="width:30%; text-align:center; border:none;">
                 <img src="{{ asset('images/'.$book->file_anh_bia) }}" 
                      class="img-fluid"
-                     style="max-height:300px">
-            </div>
+                     style="max-height:250px">
+            </td>
 
-            <!-- Thông tin sách -->
-            <div class="col-md-8">
+            <!-- THÔNG TIN -->
+            <td style="border:none;">
+                <div style="font-size:14px; line-height:1.8">
 
-                <h2>{{ $book->tieu_de }}</h2>
+                    <div>Nhà cung cấp: <b>{{ $book->nha_cung_cap }}</b></div>
+                    <div>Nhà xuất bản: <b>{{ $book->nha_xuat_ban }}</b></div>
+                    <div>Tác giả: <b>{{ $book->tac_gia }}</b></div>
+                    <div>Hình thức bìa: <b>{{ $book->hinh_thuc_bia }}</b></div>
 
-                <p>
-                    <b>Giá:</b> 
-                    <span style="color:red;font-size:20px">
-                        {{ number_format($book->gia_ban,0,",",".") }} đ
-                    </span>
-                </p>
+                    <div style="margin-top:8px;">
+
 
                 <div class='mt-2'>
                     <b>Số lượng mua:</b>
@@ -38,9 +49,25 @@
 
                 <hr>
 
-                <p>
-                    <p><b>Mô tả:</b></p>
-                    <p>{{ $book->mo_ta }}</p>
+                        <!-- MÔ TẢ -->
+        <tr style="border:none;">
+            <td colspan="2" style="border:none;">
+                <b>Mô tả:</b>
+
+                <div style="
+                    margin-top:10px;
+                    text-align:justify;
+                    font-size:14px;
+                    line-height:1.9;
+                    color:#444;
+                ">
+                    {{ $book->mo_ta }}
+                </div>
+            </td>
+        </tr>
+
+    </table>
+
 
                 <br>
 
