@@ -19,7 +19,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get("/layouts/sach_layout","App\Http\Controllers\BookController@sach");
+Route::get("/","App\Http\Controllers\BookController@sach");
 
 Route::get('/sach/theloai/{id}','App\Http\Controllers\BookController@theloai');
 
