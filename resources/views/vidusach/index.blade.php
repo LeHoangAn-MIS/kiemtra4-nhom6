@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <x-book-layout>
     <x-slot name="title">
         Sách
@@ -43,7 +42,6 @@
 </script>
 
 </x-book-layout>
-=======
 <div id='book-view-div'>
     <div class='list-book'>
         @foreach($data as $row)
@@ -90,4 +88,3 @@ $(document).ready(function(){
 });
 </script>
 
->>>>>>> origin/nguyenthithuylinh
