@@ -7,44 +7,43 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <!-- Scripts -->
 
-  <style>
-    .sidebar {
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      z-index: 100;
-      padding: 48px 0 0; /* Height of navbar */
-      box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
-      background-color:#404e68!important
-      
-    }
-    .sidebar a
-    {
-        color:white!important;
-    }
-    .navbar {
-        
-        font-weight:bold;
-        margin:0 auto;
-        margin-bottom: 20px;
-     
+ <style>
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 140px; 
+  z-index: 50;
+  padding: 36px 0 0; /* Height of navbar */
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+  background-color: #404e68 !important;
+}
 
-    }
-    .navbar-nav
-    {
-        margin:0 auto;
-        width:1000px;
-        
-    }
-    .navbar-nav a
-    {
-        color:black!important;
-    }
-    .content {
-      margin-left: 240px; /* Width of sidebar */
-    }
-  </style>
+.sidebar a {
+  color: white !important;
+}
+
+.navbar {
+  font-weight: bold;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.navbar-nav {
+  margin: 0 auto;
+  width: 1000px;
+}
+
+.navbar-nav a {
+  color: black !important;
+}
+
+.content {
+  margin-left: 140px; 
+  padding: 20px;
+}
+</style>
 </head>
  @auth
         <div class="dropdown">
