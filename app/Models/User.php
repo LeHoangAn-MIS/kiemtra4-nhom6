@@ -8,7 +8,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Notifications\CustomResetPass;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/nguyenhuynhsaly
 
 class User extends Authenticatable
 {
@@ -49,6 +52,13 @@ class User extends Authenticatable
         ];
     }
 
+<<<<<<< HEAD
    
+=======
+    public function sendPasswordResetNotification($token)
+ {
+ $this->notify(new CustomResetPass($token));
+ }
+>>>>>>> origin/nguyenhuynhsaly
 
 }

@@ -7,6 +7,7 @@
         <div style='color:#15c; font-weight:bold;font-size:15px;text-align:center'>DANH SÁCH SẢN PHẨM</div>
         
 <<<<<<< HEAD
+<<<<<<< HEAD
             <table class="table text-center align-middle" 
        style="width:70%; margin:0 auto; background:#fff; border-collapse:collapse;">
     <thead class="table-light">
@@ -55,6 +56,8 @@
     }
 </style>
 =======
+=======
+>>>>>>> origin/nguyenhuynhsaly
             <table class='book-table' style='margin:0 auto; width:70%'>
                 <thead>
                     <th>STT</th>
@@ -92,7 +95,10 @@
                     </tr>
                 </tbody>
             </table>
+<<<<<<< HEAD
 >>>>>>> origin/lethihonglinh
+=======
+>>>>>>> origin/nguyenhuynhsaly
            
                 <div style='font-weight:bold;width:70%;margin:0 auto;text-align:center;'>
                     @auth
@@ -110,7 +116,11 @@
                             {{ csrf_field() }}
                         </form>
                         @else
+<<<<<<< HEAD
                             Vui lòng chọn sản phẩm cần mua
+=======
+                        Vui lòng chọn sản phẩm cần mua
+>>>>>>> origin/nguyenhuynhsaly
                         @endif
                     @else
                         Vui lòng đăng nhập trước khi đặt hàng
@@ -120,5 +130,9 @@
        
     </div>
 
+<<<<<<< HEAD
 </x-book-layout>
 
+=======
+</x-book-layout>
+>>>>>>> origin/nguyenhuynhsaly

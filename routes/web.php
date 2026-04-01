@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Notifications\OrderSuccessNotification;
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,6 +19,7 @@ Route::middleware('auth')->group(function () {
 Route::post('/saveinfo', 'App\Http\Controllers\AccountController@saveaccountinfo')
     ->middleware('auth')
     ->name('saveinfo');
+
 
 require __DIR__.'/auth.php';
 
@@ -63,4 +65,38 @@ Route::post('/cart/delete','App\Http\Controllers\BookController@cartdelete')->na
 Route::post('/order/create','App\Http\Controllers\BookController@ordercreate')
     ->middleware('auth')->name('ordercreate');
 
+<<<<<<< HEAD
 Route::post('/bookview','App\Http\Controllers\BookController@bookview')->name("bookview");
+=======
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\TestSendEmail;
+
+Route::get('/testemail', function () {
+    Notification::route('mail', 'tynguyenhuynhsaly2604@gmail.com')
+        ->notify(new TestSendEmail());
+
+    return 'Đã gửi email test';
+});
+
+Route::get('/test-order-mail', function () {
+    $orderInfo = (object) [
+        'id' => 999,
+        'ten_khach_hang' => 'Test User',
+        'dia_chi' => 'HCM',
+        'so_dien_thoai' => '0123456789'
+    ];
+
+    $items = collect([
+        (object) [
+            'ten_sach' => 'Test Book',
+            'so_luong' => 2,
+            'gia' => 100000
+        ]
+    ]);
+
+    Notification::route('mail', 'tynguyenhuynhsaly2604@gmail.com')
+        ->notify(new OrderSuccessNotification($orderInfo, $items));
+
+    return 'Test xong';
+});
+>>>>>>> origin/nguyenhuynhsaly
