@@ -29,7 +29,7 @@
                 type:"POST",
                 dataType:"html",
                 url: "{{route('bookview')}}",
-                data:{"_token": "{{ csrf_token() }}","the_loai":the_loai},
+                data:{"_token": "{{ csrf_token() }}", "the_loai": the_loai},
                 success:function(data){
                     $("#book-view-div").html(data);
                 }
@@ -43,7 +43,7 @@
                 type:"POST",
                 dataType:"json",
                 url: "{{route('cartadd')}}",
-                data:{"_token": "{{ csrf_token() }}","id":id,"num":num},
+                data:{"_token": "{{ csrf_token() }}", "id": id, "num": num},
                 success:function(data){
                     $("#cart-number-product").html(data);
                 }

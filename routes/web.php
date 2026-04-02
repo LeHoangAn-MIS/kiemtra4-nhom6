@@ -18,7 +18,7 @@ Route::get('sach/chitiet/{id}','App\Http\Controllers\BookController@chitiet');
 Route::get('/', 'App\Http\Controllers\BookController@sach');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect()->route('account');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -30,6 +30,10 @@ Route::post('/saveinfo', 'App\Http\Controllers\AccountController@saveaccountinfo
     ->middleware('auth')
     ->name('saveinfo');
 
+Route::get('/accountpanel', 'App\Http\Controllers\AccountController@accountpanel')
+    ->middleware('auth')
+    ->name('account');
+    
 require __DIR__.'/auth.php';
 
 Route::get('/book/list','App\Http\Controllers\BookController@booklist')
