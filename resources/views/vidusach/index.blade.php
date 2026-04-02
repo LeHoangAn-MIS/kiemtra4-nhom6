@@ -1,6 +1,33 @@
 <x-book-layout>
     <x-slot name="title">Sách</x-slot>
 
+    <style>
+        .list-book {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .book img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .book {
+            position: relative;
+            margin: 10px;
+            text-align: center;
+            padding-bottom: 35px;
+        }
+
+        .btn-add-product {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+    
     <div id='book-view-div'>
         <div class='list-book'>
             @foreach($data as $row)

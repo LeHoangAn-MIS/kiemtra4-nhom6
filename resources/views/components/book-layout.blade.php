@@ -22,7 +22,7 @@
 
         .list-book {
             display:grid;
-            grid-template-columns:repeat(5,20%);
+            grid-template-columns:repeat(4,24%);
         }
 
         .book {
@@ -72,35 +72,33 @@ border-radius:50%; position:absolute;right:2px;top:-2px' id='cart-number-product
  <i class="fa fa-cart-arrow-down fa-2x mr-2 mt-2" aria-hidden="true"></i>
  </a>
 </div>
-
-
-            <!-- USER -->
-            <div class='col-3 p-0 d-flex justify-content-end'>
-                @auth
-                    <div class="dropdown">
-                        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-                            {{ Auth::user()->name }}
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="{{route('account')}}">Quản lý</a>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <a class="dropdown-item" onclick="event.preventDefault(); this.closest('form').submit();">
-                                    Đăng xuất
-                                </a>
-                            </form>
-                        </div>
-                    </div>
-                @else
-                    <a href="{{ route('login') }}">
-                        <button class='btn btn-sm btn-primary'>Đăng nhập</button>
+        <!-- USER -->
+<div class='p-0 d-flex justify-content-end'>
+    @auth
+        <div class="dropdown">
+            <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">
+                {{ Auth::user()->name }}
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="{{route('account')}}">Quản lý</a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <a class="dropdown-item" onclick="event.preventDefault(); this.closest('form').submit();">
+                        Đăng xuất
                     </a>
-                    &nbsp;
-                    <a href="{{ route('register') }}">
-                        <button class='btn btn-sm btn-success'>Đăng ký</button>
-                    </a>
-                @endauth
+                </form>
             </div>
+        </div>
+    @else
+        <a href="{{ route('login') }}">
+            <button class='btn btn-sm btn-primary'>Đăng nhập</button>
+        </a>
+        &nbsp;
+        <a href="{{ route('register') }}">
+            <button class='btn btn-sm btn-success'>Đăng ký</button>
+        </a>
+    @endauth
+</div>
 
         </div>
     </nav>

@@ -173,7 +173,7 @@ public function cartdelete(Request $request)
         unset($cart[$id]);
     }
     session()->put("cart",$cart);
-    return redirect()->route('order');
+    return redirect()->route('order')->with('status', "Xóa thành công");
 }
 
 public function ordercreate(Request $request)
@@ -187,10 +187,7 @@ public function ordercreate(Request $request)
     $id_don_hang = null;
 
     if (!session()->has('cart') || empty(session('cart'))) {
-        return view("vidusach.order", [
-            'data' => $data,
-            'quantity' => $quantity
-        ]);
+        return redirect()->route('order')->with('status', 'Giỏ hàng đang trống');
     }
 
     $order = [
@@ -238,23 +235,17 @@ public function ordercreate(Request $request)
 
     foreach ($data as $row) {
         $items->push((object) [
-            "ten_sach" => $row->ten_sach,
+            "ten_sach" => $row->tieu_de,
             "so_luong" => $quantity[$row->id] ?? 0,
             "gia" => $row->gia_ban
         ]);
     }
 
-    // Gửi mail đặt hàng thành công
+    Notification::route('mail', '030239230002@st.buh.edu.vn')
+        ->notify(new OrderSuccessNotification($orderInfo, $items));
 
-Notification::route('mail', 'tynguyenhuynhsaly2604@gmail.com')
-    ->notify(new OrderSuccessNotification($orderInfo, $items));
-
-    // Xóa giỏ hàng sau khi gửi mail
     session()->forget('cart');
 
-    return view("vidusach.order", [
-        'data' => collect(),
-        'quantity' => []
-    ]);
+    return redirect()->route('order')->with('status', 'Đặt hàng thành công');
 }
 }

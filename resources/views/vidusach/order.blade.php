@@ -5,6 +5,12 @@
 
     <div>
         <div style='color:#15c; font-weight:bold;font-size:15px;text-align:center'>DANH SÁCH SẢN PHẨM</div>
+
+        @if(session('status'))
+            <div class="alert alert-success text-center" style="width:70%; margin:10px auto;">
+                {{ session('status') }}
+            </div>
+        @endif
         
             <table class="table text-center align-middle" 
        style="width:70%; margin:0 auto; background:#fff; border-collapse:collapse;">

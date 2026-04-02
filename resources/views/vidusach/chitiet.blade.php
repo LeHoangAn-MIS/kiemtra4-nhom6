@@ -4,6 +4,18 @@
         Chi tiết sách
     </x-slot>
 
+    <style>
+        .book_info {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .tieu_de {
+            font-size: 20px;
+            font-weight: 450;
+        }
+    </style>
+    
     <div class="container mt-4">
 
             <table class="table" style="border:none;">
